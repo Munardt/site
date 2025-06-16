@@ -1,3 +1,7 @@
+import { DiscordIcon, GithubIcon, Logo, SearchIcon } from "@/components/icons";
+import { ThemeSwitch } from "@/components/navbar/theme/theme-switch";
+import { siteConfig } from "@/config/site";
+import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Link } from "@heroui/link";
 import {
@@ -10,38 +14,36 @@ import {
   NavbarMenuToggle,
 } from "@heroui/navbar";
 import { link as linkStyles } from "@heroui/theme";
+import { useTheme } from "@heroui/use-theme";
 import clsx from "clsx";
-
-import {
-  DiscordIcon,
-  GithubIcon,
-  Logo,
-  SearchIcon,
-  TwitterIcon,
-} from "@/components/icons";
-import { ThemeSwitch } from "@/components/theme-switch";
-import { siteConfig } from "@/config/site";
-import { Button } from "@heroui/button";
+import { useEffect, useState } from "react";
 
 export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Buscar"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      labelPlacement="outside"
-      placeholder="Buscar..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
+  const { theme } = useTheme();
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    function onScroll() {
+      setIsScrolled(window.scrollY > 10);
+    }
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
+    <HeroUINavbar
+      className={clsx(
+        "top-0 z-50 transition-all duration-300 bg-white/70 dark:bg-black/30",
+        "backdrop-blur supports-[backdrop-filter]:bg-white/30",
+        isScrolled ? "rounded-b-3xl" : "rounded-none",
+        isScrolled
+          ? "shadow-[0_12px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_24px_rgba(255,255,255,0.08)]"
+          : "shadow-none"
+      )}
+      maxWidth="xl"
+      position="sticky"
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand className="gap-3 max-w-fit">
           <Link
@@ -67,6 +69,7 @@ export const Navbar = () => {
                 )}
                 color="default"
                 variant="light"
+                href={item.href}
               >
                 {item.label}
               </Button>
@@ -80,9 +83,6 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal href={siteConfig.links.twitter} title="Twitter">
-            <TwitterIcon className="text-default-500" />
-          </Link>
           <Link isExternal href={siteConfig.links.discord} title="Discord">
             <DiscordIcon className="text-default-500" />
           </Link>
@@ -91,7 +91,6 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
@@ -103,21 +102,10 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarMenu>
-        {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
+              <Link color="foreground" href="#" size="lg">
                 {item.label}
               </Link>
             </NavbarMenuItem>

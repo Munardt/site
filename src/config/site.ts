@@ -12,15 +12,15 @@ export const siteConfig = {
     },
     {
       label: "Projetos",
-      href: "/pricing",
+      href: "/projects",
     },
     {
       label: "Sobre",
-      href: "/blog",
+      href: "/about",
     },
     {
       label: "Contato",
-      href: "/about",
+      href: "/contact",
     },
   ],
   navMenuItems: [
@@ -59,7 +59,6 @@ export const siteConfig = {
   ],
   links: {
     github: "https://github.com/Munardt",
-    twitter: "https://twitter.com/Munardt",
-    discord: "https://discord.gg/9b6yyZKmH4",
+    discord: "https://discord.gg/enrxQYAagR",
   },
 };

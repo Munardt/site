@@ -1,20 +1,18 @@
-import { Route, Routes } from "react-router-dom";
+import MainLayout from "./core/layout/main-layout";
 
-import IndexPage from "@/pages/index";
-import DocsPage from "@/pages/docs";
-import PricingPage from "@/pages/pricing";
-import BlogPage from "@/pages/blog";
-import AboutPage from "@/pages/about";
+import AboutPage from "@/layouts/about/about";
+import ContactPage from "@/layouts/contact/contact";
+import HomePage from "@/layouts/home/home";
+import ProjectsPage from "@/layouts/projects/projects";
 
 function App() {
   return (
-    <Routes>
-      <Route element={<IndexPage />} path="/" />
-      <Route element={<DocsPage />} path="/docs" />
-      <Route element={<PricingPage />} path="/pricing" />
-      <Route element={<BlogPage />} path="/blog" />
-      <Route element={<AboutPage />} path="/about" />
-    </Routes>
+    <MainLayout>
+      <HomePage />
+      <AboutPage />
+      <ProjectsPage />
+      <ContactPage />
+    </MainLayout>
   );
 }
 
