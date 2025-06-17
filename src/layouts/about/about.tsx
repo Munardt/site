@@ -1,58 +1,76 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { CalculateAge } from "./calculate/calculate-age";
+import {
+  SiAngular,
+  SiReact,
+  SiDocker,
+  SiDotnet,
+  SiLinux,
+} from "react-icons/si";
+import { VscAzure, VscTerminalLinux } from "react-icons/vsc";
+import { AboutTechnologies } from "@/types/about-technologies";
+import clsx from "clsx";
 
-const calculateAge = () => {
-  const birthDate = new Date("2002-08-19");
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const hasHadBirthday =
-    today.getMonth() > 7 || (today.getMonth() === 7 && today.getDate() >= 19);
-  if (!hasHadBirthday) age--;
-  return age;
-};
-
-export default function AboutPage() {
-  const [age, setAge] = useState(calculateAge());
+export default function AboutPage(): JSX.Element {
+  const [age, setAge]: [number, Dispatch<SetStateAction<number>>] =
+    useState(CalculateAge());
 
   useEffect(() => {
-    const interval = setInterval(
-      () => {
-        setAge(calculateAge());
-      },
-      1000 * 60 * 60 * 24
-    );
-    return () => clearInterval(interval);
+    setAge(CalculateAge());
   }, []);
 
   return (
-    <section id="about" className="py-20 px-6">
-      <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-pink-400 to-indigo-600 bg-clip-text text-transparent">
+    <section
+      className="min-h-[100vh] flex flex-col justify-center px-6 relative overflow-hidden"
+      id="about"
+    >
+      {/* Gradiente de fundo contínuo com o mesmo estilo do Hero */}
+      <div className="absolute inset-100 -z-10 blur-3xl opacity-30 bg-gradient-to-r from-indigo-950 to-purple-950" />
+
+      {/* Bolhas tecnológicas com mesmo estilo do Hero */}
+      <div className="absolute w-40 h-40 bg-red-600 rounded-full opacity-20 blur-2xl top-10 left-5 animate-pulse -z-10" />
+      <div className="absolute w-36 h-36 bg-blue-400 rounded-full opacity-20 blur-2xl bottom-10 right-10 animate-pulse-slow -z-10" />
+      <div className="absolute w-32 h-32 bg-sky-600 rounded-full opacity-20 blur-2xl top-[30%] right-[25%] animate-pulse-slow -z-10" />
+      <div className="absolute w-28 h-28 bg-indigo-500 rounded-full opacity-20 blur-2xl bottom-[20%] left-[20%] animate-pulse -z-10" />
+
+      <h2 className="text-4xl font-bold text-center mb-10 bg-gradient-to-r from-pink-400 to-indigo-600 bg-clip-text text-transparent">
         Sobre Mim
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div className="space-y-4 text-default-600">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-default-600">
+        <div className="space-y-5 text-base sm:text-lg">
           <p>
-            Tenho {age} anos, sou desenvolvedor Front-End com mais de 1 ano e
-            meio de experiência em um sistema ERP criado do zero.
+            Tenho {age} anos e atuo como Desenvolvedor Front-End Pleno, com mais
+            de 1 ano e meio de experiência em um sistema ERP criado do zero.
           </p>
           <p>
-            Atuo com Angular no dia a dia, e estou me especializando em React.
-            Tenho vivência com Azure App Services, Docker, GitHub Actions e
-            versionamento automatizado com semantic-release.
+            Trabalho diariamente com Angular e estou me especializando em React.
+            Também utilizo Docker, Azure App Services, GitHub Actions e
+            semantic-release para automação de versionamento.
           </p>
           <p>
-            Também possuo experiência com .NET, SQL Server, deploys em Linux e
-            rotinas de CI/CD.
+            Além disso, tenho experiência com .NET (C#), SQL Server, deploys em
+            servidores Linux e rotinas de CI/CD.
           </p>
         </div>
-        <div className="rounded-xl shadow-[0_0_20px_4px_rgba(255,255,255,0.1)] p-6 bg-default-100 dark:bg-default-50">
-          <h3 className="text-xl font-semibold mb-2">Especializações:</h3>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Angular & React</li>
-            <li>Azure App Services</li>
-            <li>Docker + GitHub Actions</li>
-            <li>.NET (C#), SQL Server</li>
-            <li>CI/CD com semantic-release</li>
-          </ul>
+
+        <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {AboutTechnologies.map((tech) => (
+            <div
+              key={tech.name}
+              className={clsx(
+                "group bg-default-100 dark:bg-default-50 rounded-xl p-4 flex flex-col items-center justify-center transform transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg",
+                tech.shadowColor // será aplicado sempre, mas visível apenas com hover:shadow
+              )}
+            >
+              <div className="mb-2">
+                {<tech.icon className={tech.iconColor} />}
+              </div>
+              <span className="text-sm font-medium text-center text-default-800">
+                {tech.name}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

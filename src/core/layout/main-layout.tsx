@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/navbar/navbar";
+import { ToastProvider } from "@heroui/toast";
 
 export default function MainLayout({
   children,
@@ -11,6 +12,7 @@ export default function MainLayout({
         <Navbar />
       </div>
       <main className="flex-grow snap-y snap-mandatory">{children}</main>
+      <ToastProvider placement="top-center" maxVisibleToasts={3} />
     </div>
   );
 }

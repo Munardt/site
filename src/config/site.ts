@@ -4,23 +4,19 @@ export const siteConfig = {
   navItems: [
     {
       label: "Home",
-      href: "/",
-    },
-    {
-      label: "Docs",
-      href: "/docs",
+      href: "#home",
     },
     {
       label: "Projetos",
-      href: "/projects",
+      href: "#projects",
     },
     {
       label: "Sobre",
-      href: "/about",
+      href: "#about",
     },
     {
       label: "Contato",
-      href: "/contact",
+      href: "#contact",
     },
   ],
   navMenuItems: [

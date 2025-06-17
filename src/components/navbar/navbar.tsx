@@ -1,8 +1,7 @@
-import { DiscordIcon, GithubIcon, Logo, SearchIcon } from "@/components/icons";
+import { DiscordIcon, GithubIcon, Logo } from "@/assets/icons";
 import { ThemeSwitch } from "@/components/navbar/theme/theme-switch";
 import { siteConfig } from "@/config/site";
 import { Button } from "@heroui/button";
-import { Input } from "@heroui/input";
 import { Link } from "@heroui/link";
 import {
   Navbar as HeroUINavbar,
@@ -13,14 +12,11 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@heroui/navbar";
-import { link as linkStyles } from "@heroui/theme";
-import { useTheme } from "@heroui/use-theme";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { NavigationButtons } from "./navigation/navigation";
 
 export const Navbar = () => {
-  const { theme } = useTheme();
-
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     function onScroll() {
@@ -38,7 +34,7 @@ export const Navbar = () => {
         "backdrop-blur supports-[backdrop-filter]:bg-white/30",
         isScrolled ? "rounded-b-3xl" : "rounded-none",
         isScrolled
-          ? "shadow-[0_12px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_24px_rgba(255,255,255,0.08)]"
+          ? "shadow-[0_12px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_24px_rgba(71.4,0.203,305.504,0.2)]"
           : "shadow-none"
       )}
       maxWidth="xl"
@@ -54,28 +50,7 @@ export const Navbar = () => {
             <Logo />
           </Link>
         </NavbarBrand>
-        <div className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <Button
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "relative overflow-visible transition-all duration-300",
-                  "hover:text-white hover:bg-black",
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
-                  "before:content-[''] before:absolute before:inset-0 before:-z-10 before:rounded-xl",
-                  "before:bg-gradient-to-r before:from-indigo-500 before:to-blue-500",
-                  "before:blur-md before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300"
-                )}
-                color="default"
-                variant="light"
-                href={item.href}
-              >
-                {item.label}
-              </Button>
-            </NavbarItem>
-          ))}
-        </div>
+        <NavigationButtons />
       </NavbarContent>
 
       <NavbarContent
