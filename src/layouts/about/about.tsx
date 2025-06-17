@@ -1,15 +1,8 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { CalculateAge } from "./calculate/calculate-age";
-import {
-  SiAngular,
-  SiReact,
-  SiDocker,
-  SiDotnet,
-  SiLinux,
-} from "react-icons/si";
-import { VscAzure, VscTerminalLinux } from "react-icons/vsc";
 import { AboutTechnologies } from "@/types/about-technologies";
 import clsx from "clsx";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+
+import { CalculateAge } from "./calculate/calculate-age";
 
 export default function AboutPage(): JSX.Element {
   const [age, setAge]: [number, Dispatch<SetStateAction<number>>] =
@@ -59,8 +52,8 @@ export default function AboutPage(): JSX.Element {
             <div
               key={tech.name}
               className={clsx(
-                "group bg-default-100 dark:bg-default-50 rounded-xl p-4 flex flex-col items-center justify-center transform transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg",
-                tech.shadowColor // será aplicado sempre, mas visível apenas com hover:shadow
+                "group bg-default-100 dark:bg-default-50 rounded-xl p-4 flex flex-col items-center justify-center transform transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl",
+                tech.shadowColor && `hover:${tech.shadowColor}`
               )}
             >
               <div className="mb-2">
