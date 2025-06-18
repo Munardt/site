@@ -1,0 +1,101 @@
+import { AboutTechnologies } from "@/types/about-technologies";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import { Tooltip } from "@heroui/tooltip";
+import { Button } from "@heroui/button";
+
+// Número total de colunas na grid
+const colsNumber = 18;
+
+/**
+ * Componente reutilizável para os blocos "fantasmas" da grid (sem conteúdo)
+ */
+const Ghost = ({ ...props }) => (
+  <div
+    {...props}
+    className="aspect-square rounded-xl bg-neutral-400 dark:bg-zinc-800 opacity-20 z-10 ring-2 ring-inset ring-black/10 dark:ring-white/10"
+  />
+);
+
+/**
+ * Renderiza uma linha central com os ícones e preenchimento nas laterais
+ */
+export function TechIconsRow({
+  rowIcons,
+  rowIdx,
+}: {
+  rowIcons: typeof AboutTechnologies;
+  rowIdx: number;
+}) {
+  const emptyCount = colsNumber - rowIcons.length;
+  const emptyStart = Math.floor(emptyCount / 2);
+  const emptyEnd = emptyCount - emptyStart;
+
+  return (
+    <div
+      key={`row-${rowIdx}`}
+      className="grid grid-cols-16 gap-4 w-full relative"
+      style={{ gridTemplateColumns: `repeat(${colsNumber}, minmax(0, 1fr))` }}
+    >
+      {/* Gradiente de fundo sutil */}
+      <div className="absolute inset-0 rounded-xl pointer-events-none bg-gradient-radial from-transparent via-transparent to-black/10 dark:to-white/10 z-0" />
+
+      {[
+        // Espaçamento do início da linha
+        ...Array.from({ length: emptyStart }).map((_, i) => (
+          <Ghost key={`ghost-start-${rowIdx}-${i}`} />
+        )),
+
+        // Ícones com animações e hover
+        ...rowIcons.map((tech, index) => (
+          <motion.div
+            key={tech.name}
+            className={clsx(
+              "relative group rounded-xl aspect-square z-10",
+              "bg-neutral-300 dark:bg-zinc-900 transition-colors duration-300",
+              "flex items-center justify-center overflow-visible",
+              "hover:-translate-y-1 hover:shadow-2xl transform transition-transform",
+              "ring-1 ring-inset ring-black/20 dark:ring-white/20"
+            )}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05, duration: 0.5 }}
+          >
+            <div
+              className={clsx(
+                "absolute -inset-2 blur-xl opacity-70 scale-100 pointer-events-none",
+                `bg-gradient-to-br ${tech.shadowColor} to-transparent`
+              )}
+            />
+            <div
+              className={clsx(
+                "absolute -inset-2 blur-2xl opacity-0 scale-75 transition-all duration-500",
+                "group-hover:opacity-100 group-hover:scale-125",
+                `bg-gradient-to-br ${tech.glowColor} to-transparent`
+              )}
+            />
+
+            <Tooltip
+              content={tech.name}
+              delay={500}
+              classNames={{
+                base: `${tech.baseTooltipColor}`,
+                content: `${tech.tooltipColor}`,
+              }}
+              showArrow={true}
+            >
+              <Button className="bg-transparent">
+                <tech.icon className={clsx(tech.iconColor, "relative z-10")} />
+              </Button>
+            </Tooltip>
+          </motion.div>
+        )),
+
+        // Espaçamento do fim da linha
+        ...Array.from({ length: emptyEnd }).map((_, i) => (
+          <Ghost key={`ghost-end-${rowIdx}-${i}`} />
+        )),
+      ]}
+    </div>
+  );
+}

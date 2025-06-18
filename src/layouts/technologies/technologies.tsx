@@ -1,59 +1,59 @@
-import { motion } from "framer-motion";
-import clsx from "clsx";
-import { DiscordIcon, GithubIcon, LinkedInIcon } from "@/assets/icons";
+import { Fragment } from "react/jsx-runtime";
+import { TechPlaceholderRow } from "./placeholder/tech-placeholder";
+import { TechIconsRow } from "./icons/tech-icons";
+import { AboutTechnologies } from "@/types/about-technologies";
+import { Tooltip } from "@heroui/tooltip";
+import { Button } from "@heroui/button";
 
-// Tipagem para cada tecnologia
-interface Technology {
-  name: string;
-  icon: JSX.Element;
-  glowColor: string; // tailwind color class, ex: "from-blue-500"
-}
+// Estrutura de linhas intermediárias com número de ícones por linha
+const gridStructure = [7, 9, 5];
 
-// Ícones de exemplo (substitua pelos seus reais)
-
-const technologies: Technology[] = [
-  {
-    name: "React",
-    icon: <DiscordIcon size={32} />,
-    glowColor: "from-blue-500",
-  },
-  {
-    name: "Vue",
-    icon: <GithubIcon size={32} />,
-    glowColor: "from-slate-950",
-  },
-  {
-    name: "Node",
-    icon: <LinkedInIcon size={32} />,
-    glowColor: "from-blue-600",
-  },
-  // Adicione mais aqui
-];
-
+/**
+ * Componente principal da grid de tecnologias
+ */
 export default function TechnologiesGrid() {
+  let iconIndex = 0;
+
   return (
-    <section className="relative z-10 py-20 text-white">
-      <h2 className="text-center text-3xl font-bold mb-12">
-        Tecnologias que utilizo
-      </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 px-6">
-        {technologies.map((tech, index) => (
-          <motion.div
-            key={tech.name}
-            className="relative group rounded-xl bg-zinc-900 p-5 flex items-center justify-center overflow-hidden shadow-md"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-          >
-            <div
-              className={clsx(
-                "absolute inset-0 blur-2xl opacity-0 scale-75 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100",
-                `bg-gradient-to-br ${tech.glowColor} to-transparent`
-              )}
-            />
-            <div className="relative z-10">{tech.icon}</div>
-          </motion.div>
-        ))}
+    <section className="min-h-[100vh] relative z-10 py-20 bg-white dark:bg-black">
+      <h1 className="text-4xl lg:text-5xl font-bold p-2 text-center bg-gradient-to-r from-emerald-600 to-indigo-700 bg-clip-text text-transparent dark:from-emerald-400 dark:to-indigo-700">
+        Tecnologias e Linguagens de Programação
+      </h1>
+
+      <p className="max-w-3xl p-10 mx-auto text-center text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+        Essas são as principais tecnologias e linguagens com as quais já atuei
+        em projetos reais. Tenho familiaridade com todo o ecossistema
+        representado, incluindo frameworks, bibliotecas, ferramentas de
+        versionamento, integração contínua e ambientes de desenvolvimento. Essa
+        base sólida me permite atuar com eficiência no front-end! Já no back-end
+        ainda estou desenvolvendo e aprimorando minhas habilidades.
+      </p>
+
+      <div className="space-y-6 px-10 max-w-8xl mx-auto">
+        {/* Grid superior (sombra de fundo) */}
+        <TechPlaceholderRow keyPrefix="top-layer" />
+
+        {/* Linhas de ícones com centragem e animações */}
+        {gridStructure.map((iconsInLine, rowIdx) => {
+          const rowIcons = AboutTechnologies.slice(
+            iconIndex,
+            iconIndex + iconsInLine
+          );
+          iconIndex += iconsInLine;
+          return (
+            <Fragment key={`fragment-${rowIdx}`}>
+              <TechIconsRow rowIcons={rowIcons} rowIdx={rowIdx} />
+            </Fragment>
+          );
+        })}
+
+        {/* Grid inferior (sombra de fundo) */}
+        <TechPlaceholderRow keyPrefix="bottom-layer" />
+      </div>
+      <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-r from-emerald-900 to-indigo-900" />
+
+      <div className="absolute top-0 left-0 w-full h-40 -z-10">
+        <div className="w-full h-full bg-gradient-to-b from-emerald-900/5 via-indigo-900/3 to-transparent blur-xl"></div>
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ export const Navbar = () => {
   return (
     <HeroUINavbar
       className={clsx(
-        "top-0 z-50 transition-all duration-300 bg-white/70 dark:bg-black/30",
+        "top-0 z-50 bg-white/70 dark:bg-black/30",
         "backdrop-blur supports-[backdrop-filter]:bg-white/30",
         isScrolled ? "rounded-b-3xl" : "rounded-none",
         isScrolled
