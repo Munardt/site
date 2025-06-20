@@ -1,8 +1,7 @@
-import { CardSiteIntro } from "@/layouts/about/intro/about-intro";
-import { AboutMe } from "@/layouts/about/me/about-me";
-import { CardNameOrigin } from "@/layouts/about/name-origin/about-name-origin";
-import { CardPhilosophy } from "@/layouts/about/philosophy/about-philosophy";
-import { CardTools } from "@/layouts/about/tools/about-tools";
+import { AboutMunardt } from "@/layouts/about/about-munardt/about-munardt";
+import { AboutMe } from "@/layouts/about/about-me/about-me";
+import { AboutNameOrigin } from "@/layouts/about/about-name-origin/about-name-origin";
+import { AboutPhilosophy } from "@/layouts/about/about-philosophy/about-philosophy";
 
 export default function AboutPage(): JSX.Element {
   return (
@@ -14,21 +13,18 @@ export default function AboutPage(): JSX.Element {
         Um pouco sobre mim & Munardt
       </h2>
 
-      <div className="grid grid-cols-12 grid-rows-2 gap-4 px-6 max-w-[1100px] mx-auto">
+      <div className="grid grid-cols-12 grid-rows-2 gap-4 px-6 max-w-[1200px] mx-auto">
         <div className="col-span-12 sm:col-span-6 md:col-span-4">
           <AboutMe />
         </div>
-        <div className="col-span-12 sm:col-span-6 md:col-span-4">
-          <CardTools />
+        <div className="col-span-12 sm:col-span-6 md:col-span-8">
+          <AboutMunardt />
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-8">
+          <AboutPhilosophy />
         </div>
         <div className="col-span-12 sm:col-span-6 md:col-span-4">
-          <CardSiteIntro />
-        </div>
-        <div className="col-span-12 sm:col-span-6 md:col-span-4">
-          <CardNameOrigin />
-        </div>
-        <div className="col-span-12 sm:col-span-6 md:col-span-6">
-          <CardPhilosophy />
+          <AboutNameOrigin />
         </div>
       </div>
       <div className="absolute inset-0 -z-10 blur-3xl opacity-25 bg-gradient-to-tr from-indigo-950 to-purple-950" />

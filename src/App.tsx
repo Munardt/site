@@ -14,7 +14,7 @@ function App() {
         <HomePage />
         <AboutPage />
         <TechnologiesGrid />
-        <ProjectsPage />
+        {/* <ProjectsPage /> */}
         <ContactPage />
       </MainLayout>
     </Provider>
