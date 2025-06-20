@@ -2,7 +2,12 @@ import { siteConfig } from "@/config/site";
 import { Button } from "@heroui/button";
 import { NavbarItem } from "@heroui/navbar";
 
-export function NavigationButtons() {
+/**
+ * Função que renderiza o menu de navegação para dispositivos de desktop.
+ * Contém as opções de navegação do site.
+ * @returns {JSX.Element} Elemento JSX contendo o menu de navegação.
+ */
+export function NavigationDesktop(): JSX.Element {
   return (
     <div className="hidden lg:flex gap-4 justify-start ml-2">
       {siteConfig.navItems.map((option) => (

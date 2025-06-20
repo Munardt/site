@@ -1,56 +1,28 @@
 export type SiteConfig = typeof siteConfig;
 
+/** Configurações do site (navegação) */
 export const siteConfig = {
+  /** Itens do site (exibido na barra de navegação) */
   navItems: [
     {
       label: "Home",
       href: "#home",
     },
     {
-      label: "Projetos",
-      href: "#projects",
-    },
-    {
       label: "Sobre",
       href: "#about",
     },
     {
+      label: "Tecnologias",
+      href: "#technologies",
+    },
+    {
+      label: "Projetos",
+      href: "#projects",
+    },
+    {
       label: "Contato",
       href: "#contact",
-    },
-  ],
-  navMenuItems: [
-    {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
     },
   ],
   links: {

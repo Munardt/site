@@ -1,5 +1,9 @@
 import { Button } from "@heroui/button";
 
+/**
+ * Componente de apresentação inicial do site. Famoso Hero Section.
+ * @returns {JSX.Element} Um elemento JSX que representa o componente.
+ */
 export default function HomePage(): JSX.Element {
   return (
     <section
@@ -31,16 +35,10 @@ export default function HomePage(): JSX.Element {
         </Button>
       </div>
 
-      {/* Glow de fundo sutil */}
       <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-r from-indigo-950 to-purple-950"></div>
 
-      {/* Animação sutil ao fundo */}
       <div className="absolute top-[20%] left-[10%] w-40 h-40 bg-purple-700 rounded-full opacity-20 blur-2xl animate-pulse -z-10"></div>
       <div className="absolute bottom-[15%] right-[15%] w-60 h-60 bg-pink-500 rounded-full opacity-10 blur-3xl animate-pulse-slow -z-10"></div>
-      {/* Fade suave para a próxima seção */}
-      <div className="absolute bottom-0 left-0 w-full h-40 -z-10">
-        <div className="w-full h-full bg-gradient-to-t from-purple-950/5 via-purple-950/3 to-transparent blur-xl"></div>
-      </div>
     </section>
   );
 }

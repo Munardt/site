@@ -1,9 +1,8 @@
-import { Fragment } from "react/jsx-runtime";
-import { TechPlaceholderRow } from "./placeholder/tech-placeholder";
-import { TechIconsRow } from "./icons/tech-icons";
 import { AboutTechnologies } from "@/types/about-technologies";
-import { Tooltip } from "@heroui/tooltip";
-import { Button } from "@heroui/button";
+import { Fragment } from "react/jsx-runtime";
+
+import { TechIconsRow } from "./icons/tech-icons";
+import { TechPlaceholderRow } from "./placeholder/tech-placeholder";
 
 // Estrutura de linhas intermediárias com número de ícones por linha
 const gridStructure = [7, 9, 5];
@@ -15,8 +14,11 @@ export default function TechnologiesGrid() {
   let iconIndex = 0;
 
   return (
-    <section className="min-h-[100vh] relative z-10 py-20 bg-white dark:bg-black">
-      <h1 className="text-4xl lg:text-5xl font-bold p-2 text-center bg-gradient-to-r from-emerald-600 to-indigo-700 bg-clip-text text-transparent dark:from-emerald-400 dark:to-indigo-700">
+    <section
+      className="min-h-[100vh] relative z-10 py-20 bg-transparent"
+      id="technologies"
+    >
+      <h1 className="text-4xl lg:text-5xl font-bold p-2 text-center bg-gradient-to-r from-pink-600 to-violet-700 bg-clip-text text-transparent dark:from-pink-400 dark:to-violet-700">
         Tecnologias e Linguagens de Programação
       </h1>
 
@@ -50,11 +52,7 @@ export default function TechnologiesGrid() {
         {/* Grid inferior (sombra de fundo) */}
         <TechPlaceholderRow keyPrefix="bottom-layer" />
       </div>
-      <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-r from-emerald-900 to-indigo-900" />
-
-      <div className="absolute top-0 left-0 w-full h-40 -z-10">
-        <div className="w-full h-full bg-gradient-to-b from-emerald-900/5 via-indigo-900/3 to-transparent blur-xl"></div>
-      </div>
+      <div className="absolute inset-0 -z-10 blur-3xl opacity-25 bg-gradient-to-r from-violet-950 to-indigo-950" />
     </section>
   );
 }

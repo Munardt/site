@@ -1,22 +1,27 @@
 import { DiscordIcon, GithubIcon, Logo } from "@/assets/icons";
 import { ThemeSwitch } from "@/components/navbar/theme/theme-switch";
 import { siteConfig } from "@/config/site";
-import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import {
   Navbar as HeroUINavbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  NavbarMenu,
-  NavbarMenuItem,
   NavbarMenuToggle,
 } from "@heroui/navbar";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { NavigationButtons } from "./navigation/navigation";
 
-export const Navbar = () => {
+import { NavigationDesktop } from "./navigation/navigation-desktop";
+import { NavigationMobile } from "./navigation/navigation-mobile";
+
+/**
+ * Componente de navegação do site.
+ *
+ * Serve como barra de navegação principal do site e header sempre visível.
+ * @returns {JSX.Element} Componente de navegação do site.
+ */
+export const Navbar = (): JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     function onScroll() {
@@ -34,7 +39,7 @@ export const Navbar = () => {
         "backdrop-blur supports-[backdrop-filter]:bg-white/30",
         isScrolled ? "rounded-b-3xl" : "rounded-none",
         isScrolled
-          ? "shadow-[0_12px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_24px_rgba(71.4,0.203,305.504,0.2)]"
+          ? "shadow-[0_12px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_24px_rgba(255,255,255,0.1)]"
           : "shadow-none"
       )}
       maxWidth="xl"
@@ -50,7 +55,7 @@ export const Navbar = () => {
             <Logo />
           </Link>
         </NavbarBrand>
-        <NavigationButtons />
+        <NavigationDesktop />
       </NavbarContent>
 
       <NavbarContent
@@ -76,17 +81,7 @@ export const Navbar = () => {
         <NavbarMenuToggle />
       </NavbarContent>
 
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link color="foreground" href="#" size="lg">
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
-      </NavbarMenu>
+      <NavigationMobile />
     </HeroUINavbar>
   );
 };
