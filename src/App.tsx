@@ -1,7 +1,6 @@
 import AboutPage from "@/layouts/about/about";
 import ContactPage from "@/layouts/contact/contact";
 import HomePage from "@/layouts/home/home";
-import ProjectsPage from "@/layouts/projects/projects";
 
 import MainLayout from "./core/main-layout";
 import { Provider } from "./provider";
@@ -23,7 +22,6 @@ import TechnologiesGrid from "@/layouts/technologies/technologies";
  *   a finalização da interface da página de projetos.)
  * - `ContactPage`: A página de contato da aplicação.
  */
-
 function App() {
   return (
     <Provider>
@@ -31,7 +29,6 @@ function App() {
         <HomePage />
         <AboutPage />
         <TechnologiesGrid />
-        {/* <ProjectsPage /> */}
         <ContactPage />
       </MainLayout>
     </Provider>
