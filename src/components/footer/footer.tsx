@@ -1,5 +1,9 @@
 import { Link } from "@heroui/link";
 
+/**
+ * Componente de rodapé do site.
+ * @returns {JSX.Element} Componente de rodapé do site.
+ */
 export default function Footer(): JSX.Element {
   return (
     <footer className="w-full flex items-center justify-center py-3">

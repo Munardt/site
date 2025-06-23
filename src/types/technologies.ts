@@ -22,11 +22,10 @@ import {
   DiUbuntu,
   DiDotnet,
 } from "react-icons/di";
-
-import { AboutTechnologiesInterface } from "@/interfaces/general/about-technologies";
+import { TechnologiesInterface } from "@/interfaces/general/technologies";
 
 /** Constante com as tecnologias utilizadas com ícones, nomes e cores */
-export const AboutTechnologies: AboutTechnologiesInterface[] = [
+export const AboutTechnologies: TechnologiesInterface[] = [
   {
     name: "Angular",
     icon: SiAngular,

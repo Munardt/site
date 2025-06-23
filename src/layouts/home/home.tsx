@@ -14,13 +14,13 @@ export default function HomePage(): JSX.Element {
         Olá, eu sou Gabriel Arthur Mundt
       </h1>
 
-      <p className="mt-4 text-lg sm:text-xl text-default-500 max-w-2xl">
+      <p className="mt-4 text-lg sm:text-xl text-default-600 max-w-2xl">
         Desenvolvedor Front-End Pleno com foco em performance, produtividade e
         experiências visuais marcantes. Especialista em Angular, React, Azure e
         Docker.
       </p>
 
-      <p className="mt-2 text-default-400 max-w-xl text-sm sm:text-base">
+      <p className="mt-2 text-default-600 max-w-xl text-sm sm:text-base">
         Crio interfaces modernas, responsivas e elegantes, combinando código
         limpo com atenção aos detalhes visuais para oferecer a melhor
         experiência ao usuário.

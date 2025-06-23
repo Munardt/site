@@ -6,10 +6,15 @@ import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 import { MoonFilledIcon, SunFilledIcon } from "@/assets/icons";
 
+/**
+ * Constante que representa o componente `ThemeSwitch` para alterar o tema do site.
+ * @param {ThemeSwitchProps} param0 Propriedades do componente
+ * @returns {JSX.Element} Componente `ThemeSwitch`
+ */
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   className,
   classNames,
-}) => {
+}): JSX.Element => {
   const [isMounted, setIsMounted] = useState(false);
 
   const { theme, setTheme } = useTheme();

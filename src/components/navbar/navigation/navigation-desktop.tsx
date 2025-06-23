@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { ScrollToElementWithEase } from "@/shared/functions/scroll-animation";
 import { Button } from "@heroui/button";
 import { NavbarItem } from "@heroui/navbar";
 
@@ -13,6 +14,12 @@ export function NavigationDesktop(): JSX.Element {
       {siteConfig.navItems.map((option) => (
         <NavbarItem key={option.label}>
           <Button
+            onPress={() => {
+              const section = document.getElementById(
+                option.href.replace("#", "")
+              );
+              if (section) ScrollToElementWithEase(section, 1000);
+            }}
             className={`
                   text-default-800
                   dark:text-white
@@ -22,7 +29,7 @@ export function NavigationDesktop(): JSX.Element {
             color="secondary"
             variant="light"
           >
-            <a href={option.href}>{option.label}</a>
+            {option.label}
           </Button>
         </NavbarItem>
       ))}

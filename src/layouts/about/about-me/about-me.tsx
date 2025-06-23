@@ -20,7 +20,11 @@ export function AboutMe(): JSX.Element {
   }, []);
   const [isFollowed, setIsFollowed] = React.useState(false);
 
-  const ButtonRender = () => {
+  /**
+   * O botão de seguidor de Instagram.
+   * @returns {JSX.Element} Um elemento JSX que representa o botão de seguidor de Instagram.
+   */
+  const ButtonRender = (): JSX.Element => {
     if (isFollowed) {
       return (
         <Button
@@ -47,8 +51,8 @@ export function AboutMe(): JSX.Element {
         >
           <a
             href="https://www.instagram.com/munardt/"
+            rel="noreferrer"
             target="_blank"
-            rel="noopener noreferrer"
           >
             Seguir
           </a>
@@ -69,10 +73,9 @@ export function AboutMe(): JSX.Element {
 
         dark:bg-zinc-900/40 dark:border-zinc-300/10 dark:text-white
         dark:shadow-[0_4px_30px_rgba(140,120,255,0.2)]
-        min-h-[300px]
+        min-h-[275px]
       `}
       >
-        {/* Glow suave de fundo */}
         <div
           className={`
           absolute inset-0 z-[-1] rounded-2xl
@@ -82,7 +85,7 @@ export function AboutMe(): JSX.Element {
           blur-2xl opacity-40
         `}
         />
-        <CardHeader className="justify-between">
+        <CardHeader className="justify-between p-0 pb-3">
           <div className="flex gap-5">
             <div className="flex flex-col gap-1 items-start justify-center">
               <h4 className="text-small font-semibold leading-none text-default-600">
@@ -95,7 +98,7 @@ export function AboutMe(): JSX.Element {
           </div>
           <ButtonRender />
         </CardHeader>
-        <CardBody>
+        <CardBody className="p-0">
           <p className="p-0 text-sm leading-relaxed">
             Tenho {age} anos e atuo como Desenvolvedor Front-End Pleno, com mais
             de 1 ano e meio de experiência em um sistema ERP construído do zero.

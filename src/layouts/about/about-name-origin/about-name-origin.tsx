@@ -1,6 +1,10 @@
 import { AboutCard } from "../about-card/about-card";
 
-export function AboutNameOrigin() {
+/**
+ * Componente que explica por que a Munardt existe.
+ * @returns {JSX.Element} Um elemento JSX que representa o componente.
+ */
+export function AboutNameOrigin(): JSX.Element {
   return (
     <AboutCard title="Por que existe a Munardt">
       <p>

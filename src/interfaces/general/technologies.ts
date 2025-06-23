@@ -1,7 +1,7 @@
 import { IconType } from "react-icons/lib";
 
 /** Interface para representar uma tecnologia */
-export interface AboutTechnologiesInterface {
+export interface TechnologiesInterface {
   /** Nome da tecnologia */
   name: string;
 

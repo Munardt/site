@@ -1,10 +1,18 @@
-// Número total de colunas na grid
-const colsNumber = 18;
+/* Número total de colunas na grid */
+const colsNumber: number = 18;
 
 /**
- * Renderiza uma linha de placeholders (blocos visuais de fundo sem conteúdo)
+ * Componente que renderiza uma linha de placeholders para tecnologias em uma
+ * grade com o mesmo espa amento que o TechIconsRow.
+ *
+ * @param {string} keyPrefix Prefixo para a chave única de cada placeholder.
+ * @returns {JSX.Element} O componente da linha de placeholders.
  */
-export function TechPlaceholderRow({ keyPrefix }: { keyPrefix: string }) {
+export function TechPlaceholderRow({
+  keyPrefix,
+}: {
+  keyPrefix: string;
+}): JSX.Element {
   return (
     <div
       className="grid grid-cols-16 gap-4 w-full"

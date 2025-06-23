@@ -5,15 +5,22 @@ import { Link } from "@heroui/link";
 
 import { EmailContact } from "./email/email-contact";
 
+/**
+ * Componente que representa a página de contato.
+ * Exibe a seção de contato com links para as redes sociais e um formul ário de contato por e-mail.
+ * @returns {JSX.Element} Um elemento JSX que representa o componente.
+ */
 export default function ContactPage() {
   return (
     <section className="py-4 px-6 text-white relative" id="contact">
       <div className="absolute inset-0 -z-10 blur-[100px] opacity-20 bg-gradient-to-r from-pink-500 via-indigo-500 to-purple-500" />
-      <h2 className="text-4xl font-bold text-center mb-8 text-default-800 dark:text-white">
+      <h2 className="text-4xl font-bold text-center mb-8 text-default-800 dark:text-default-700">
         Vamos conversar
       </h2>
       <div className="max-w-xl mx-auto text-center space-y-6">
-        <p className="text-lg">Me encontre nas redes ou envie um e-mail:</p>
+        <p className="text-lg text-default-800 dark:text-default-700">
+          Me encontre nas redes ou envie um e-mail:
+        </p>
         <div className="flex justify-center gap-6">
           <EmailContact />
           {contactButtons.map((button) => (

@@ -35,7 +35,7 @@ export const Navbar = (): JSX.Element => {
   return (
     <HeroUINavbar
       className={clsx(
-        "top-0 z-50 bg-white/70 dark:bg-black/30",
+        "top-0 z-50 bg-white/30 dark:bg-black/30",
         "backdrop-blur supports-[backdrop-filter]:bg-white/30",
         isScrolled ? "rounded-b-3xl" : "rounded-none",
         isScrolled
@@ -64,10 +64,13 @@ export const Navbar = (): JSX.Element => {
       >
         <NavbarItem className="hidden sm:flex gap-2">
           <Link isExternal href={siteConfig.links.discord} title="Discord">
-            <DiscordIcon className="text-default-500" />
+            <DiscordIcon
+              className="text-default-600 transition-all duration-300 ease-in-out
+                  hover:bg-[#a855f7]/10 hover:shadow-[0_0_20px_4px_rgba(168,85,247,0.4)]"
+            />
           </Link>
           <Link isExternal href={siteConfig.links.github} title="GitHub">
-            <GithubIcon className="text-default-500" />
+            <GithubIcon className="text-default-600  transition-all duration-300 ease-in-out hover:bg-[#a855f7]/10 hover:shadow-[0_0_20px_4px_rgba(168,85,247,0.4)]" />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
@@ -75,7 +78,10 @@ export const Navbar = (): JSX.Element => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <Link isExternal href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
+          <GithubIcon
+            className="text-default-600 transition-all duration-300 ease-in-out
+                  hover:bg-[#a855f7]/10 hover:shadow-[0_0_20px_4px_rgba(168,85,247,0.4)]"
+          />
         </Link>
         <ThemeSwitch />
         <NavbarMenuToggle />

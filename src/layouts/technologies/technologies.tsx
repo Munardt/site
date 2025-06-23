@@ -1,21 +1,27 @@
-import { AboutTechnologies } from "@/types/about-technologies";
+import { AboutTechnologies } from "@/types/technologies";
 import { Fragment } from "react/jsx-runtime";
 
 import { TechIconsRow } from "./icons/tech-icons";
 import { TechPlaceholderRow } from "./placeholder/tech-placeholder";
 
-// Estrutura de linhas intermediárias com número de ícones por linha
-const gridStructure = [7, 9, 5];
+/* Estrutura de linhas intermediárias com número de ícones por linha */
+const gridStructure: number[] = [7, 9, 5];
 
 /**
- * Componente principal da grid de tecnologias
+ * Componente que exibe uma grade de tecnologias e linguagens de programação.
+ * A grade é composta por ícones de tecnologias organizados em linhas, com
+ * placeholders no topo e na base. O componente também inclui uma seção de
+ * introdução que descreve a experiência do desenvolvedor com as tecnologias
+ * listadas.
+ *
+ * @returns {JSX.Element} O elemento JSX que representa a grade de tecnologias.
  */
-export default function TechnologiesGrid() {
-  let iconIndex = 0;
+export default function TechnologiesGrid(): JSX.Element {
+  let iconIndex: number = 0;
 
   return (
     <section
-      className="min-h-[100vh] relative z-10 py-20 bg-transparent"
+      className="flex flex-col justify-center items-center min-h-[100vh] relative z-10 py-20 bg-transparent"
       id="technologies"
     >
       <h1 className="text-4xl lg:text-5xl font-bold p-2 text-center bg-gradient-to-r from-pink-600 to-violet-700 bg-clip-text text-transparent dark:from-pink-400 dark:to-violet-700">
@@ -32,10 +38,8 @@ export default function TechnologiesGrid() {
       </p>
 
       <div className="space-y-6 px-10 max-w-8xl mx-auto">
-        {/* Grid superior (sombra de fundo) */}
         <TechPlaceholderRow keyPrefix="top-layer" />
 
-        {/* Linhas de ícones com centragem e animações */}
         {gridStructure.map((iconsInLine, rowIdx) => {
           const rowIcons = AboutTechnologies.slice(
             iconIndex,
@@ -49,10 +53,9 @@ export default function TechnologiesGrid() {
           );
         })}
 
-        {/* Grid inferior (sombra de fundo) */}
         <TechPlaceholderRow keyPrefix="bottom-layer" />
       </div>
-      <div className="absolute inset-0 -z-10 blur-3xl opacity-25 bg-gradient-to-r from-violet-950 to-indigo-950" />
+      <div className="absolute inset-0 -z-10 blur-3xl opacity-25 bg-gradient-to-tr from-violet-950 to-indigo-900" />
     </section>
   );
 }

@@ -16,10 +16,10 @@ export const siteConfig = {
       label: "Tecnologias",
       href: "#technologies",
     },
-    {
-      label: "Projetos",
-      href: "#projects",
-    },
+    // {
+    //   label: "Projetos",
+    //   href: "#projects",
+    // },
     {
       label: "Contato",
       href: "#contact",

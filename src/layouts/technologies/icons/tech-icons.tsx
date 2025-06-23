@@ -1,11 +1,11 @@
-import { AboutTechnologies } from "@/types/about-technologies";
+import { AboutTechnologies } from "@/types/technologies";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { Tooltip } from "@heroui/tooltip";
 import { Button } from "@heroui/button";
 
-// Número total de colunas na grid
-const colsNumber = 18;
+/* Número total de colunas na grid */
+const colsNumber: number = 18;
 
 /**
  * Componente reutilizável para os blocos "fantasmas" da grid (sem conteúdo)
@@ -18,7 +18,17 @@ const Ghost = ({ ...props }) => (
 );
 
 /**
- * Renderiza uma linha central com os ícones e preenchimento nas laterais
+ * Componente que renderiza uma linha de tecnologias com efeitos de
+ * animação e hover. Utiliza a biblioteca Framer Motion para criar
+ * efeitos de movimento e escalonamento.
+ *
+ * @param {typeof AboutTechnologies} rowIcons Array de objetos
+ *   com dados de cada tecnologia (nome, cor de background, cor de
+ *   gradiente, cor de texto, etc.).
+ * @param {number} rowIdx Índice da linha na grid.
+ *
+ * @returns {JSX.Element} O componente JSX que representa a linha
+ *   de tecnologias.
  */
 export function TechIconsRow({
   rowIcons,
@@ -27,9 +37,9 @@ export function TechIconsRow({
   rowIcons: typeof AboutTechnologies;
   rowIdx: number;
 }) {
-  const emptyCount = colsNumber - rowIcons.length;
-  const emptyStart = Math.floor(emptyCount / 2);
-  const emptyEnd = emptyCount - emptyStart;
+  const emptyCount: number = colsNumber - rowIcons.length;
+  const emptyStart: number = Math.floor(emptyCount / 2);
+  const emptyEnd: number = emptyCount - emptyStart;
 
   return (
     <div
@@ -37,16 +47,13 @@ export function TechIconsRow({
       className="grid grid-cols-16 gap-4 w-full relative"
       style={{ gridTemplateColumns: `repeat(${colsNumber}, minmax(0, 1fr))` }}
     >
-      {/* Gradiente de fundo sutil */}
       <div className="absolute inset-0 rounded-xl pointer-events-none bg-gradient-radial from-transparent via-transparent to-black/10 dark:to-white/10 z-0" />
 
       {[
-        // Espaçamento do início da linha
         ...Array.from({ length: emptyStart }).map((_, i) => (
           <Ghost key={`ghost-start-${rowIdx}-${i}`} />
         )),
 
-        // Ícones com animações e hover
         ...rowIcons.map((tech, index) => (
           <motion.div
             key={tech.name}
@@ -91,7 +98,6 @@ export function TechIconsRow({
           </motion.div>
         )),
 
-        // Espaçamento do fim da linha
         ...Array.from({ length: emptyEnd }).map((_, i) => (
           <Ghost key={`ghost-end-${rowIdx}-${i}`} />
         )),

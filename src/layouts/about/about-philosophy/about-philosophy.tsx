@@ -1,6 +1,18 @@
 import { AboutCard } from "../about-card/about-card";
 
-export function AboutPhilosophy() {
+/**
+ * Componente que exibe a filosofia da Munardt.
+ *
+ * @returns {JSX.Element} Um elemento JSX que representa o componente.
+ *
+ * @description A filosofia da Munardt destaca a importância de projetos
+ * personalizados, onde a tecnologia é adaptada à realidade dos clientes.
+ * Priorizamos a honestidade, clareza e profundidade, visando criar sistemas
+ * duradouros e automações que facilitem processos. Cada solução é pensada
+ * para transformar e otimizar o fluxo de trabalho dos clientes, ouvindo
+ * suas necessidades e integrando com suas soluções atuais.
+ */
+export function AboutPhilosophy(): JSX.Element {
   return (
     <AboutCard title="A filosofia">
       <p>

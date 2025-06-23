@@ -3,10 +3,15 @@ import { AboutMe } from "@/layouts/about/about-me/about-me";
 import { AboutNameOrigin } from "@/layouts/about/about-name-origin/about-name-origin";
 import { AboutPhilosophy } from "@/layouts/about/about-philosophy/about-philosophy";
 
+/**
+ * Componente que representa a página de sobre mim.
+ * Explica um pouco sobre mim e a Munardt, como eu acredito que ela pode — e deve — simplificar a vida, como nasceu, e como ela funciona.
+ * @returns {JSX.Element} Um elemento JSX que representa o componente.
+ */
 export default function AboutPage(): JSX.Element {
   return (
     <section
-      className="min-h-[100vh] relative z-10 py-20 bg-transparent"
+      className="flex flex-col justify-center items-center min-h-[100vh] relative z-10 py-20 bg-transparent"
       id="about"
     >
       <h2 className="text-4xl sm:text-5xl font-bold text-center text-shadow-lg/60 mb-12 bg-gradient-to-r from-pink-400 to-indigo-600 bg-clip-text text-transparent">
