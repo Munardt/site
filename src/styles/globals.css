@@ -1,7 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+/* Observação: talvez seja necessário alterar o caminho para que se ajuste à estrutura do seu projeto */
+@config "../../tailwind.config.js";
 
+/* Seus estilos globais continuam */
 ::selection {
   background-color: rgba(45.7, 0.24, 277.023, 0.3);
 }

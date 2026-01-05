@@ -15,7 +15,7 @@ export default function AboutPage(): JSX.Element {
       className="flex flex-col justify-center items-center min-h-[100vh] relative z-10 py-20 bg-transparent"
       id="about"
     >
-      <h2 className="text-4xl sm:text-5xl font-bold text-center text-shadow-lg/60 mb-12 bg-gradient-to-r from-pink-400 to-indigo-600 bg-clip-text text-transparent">
+      <h2 className="bg-clip-text text-4xl sm:text-5xl font-bold text-center text-shadow-lg/60 mb-12 bg-gradient-to-r from-pink-400 to-indigo-600 ">
         Um pouco sobre mim & Munardt
       </h2>
 
