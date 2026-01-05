@@ -1,4 +1,5 @@
 import { Link } from "@heroui/link";
+import { JSX } from "react";
 
 /**
  * Componente de rodapé do site.

@@ -8,6 +8,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@heroui/dropdown";
+import { JSX } from "react";
 
 /**
  * Componente de contato por e-mail.

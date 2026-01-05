@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { Button } from "@heroui/button";
 import { NavbarMenu, NavbarMenuItem } from "@heroui/navbar";
+import { JSX } from "react";
 
 /**
  * Função responsável por conter as opções de navegação do site para dispositivos mobile.

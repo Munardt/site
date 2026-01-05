@@ -1,6 +1,6 @@
 import { Button } from "@heroui/button";
 import { Card, CardBody, CardHeader } from "@heroui/card";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, JSX, SetStateAction, useEffect, useState } from "react";
 import React from "react";
 import { FaInstagram } from "react-icons/fa";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
@@ -101,7 +101,7 @@ export function AboutMe(): JSX.Element {
         <CardBody className="p-0">
           <p className="p-0 text-sm leading-relaxed">
             Tenho {age} anos e atuo como Desenvolvedor Front-End Pleno, com mais
-            de 1 ano e meio de experiência em um sistema ERP construído do zero.
+            de 2 anos de experiência em um sistema ERP construído do zero.
             Especializado em Angular e cada vez mais envolvido com o ecossistema
             React, gosto de explorar o equilíbrio entre performance, design e
             experiência do usuário.

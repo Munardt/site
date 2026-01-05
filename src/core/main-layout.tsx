@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar/navbar";
 import { ToastProvider } from "@heroui/toast";
+import { JSX } from "react";
 
 /**
  * Layout principal do site, que inclui a barra de navegação e o conteúdo principal.

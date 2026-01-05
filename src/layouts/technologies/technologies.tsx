@@ -3,6 +3,7 @@ import { Fragment } from "react/jsx-runtime";
 
 import { TechIconsRow } from "./icons/tech-icons";
 import { TechPlaceholderRow } from "./placeholder/tech-placeholder";
+import { JSX } from "react";
 
 /* Estrutura de linhas intermediárias com número de ícones por linha */
 const gridStructure: number[] = [7, 9, 5];

@@ -2,6 +2,7 @@ import { siteConfig } from "@/config/site";
 import { ScrollToElementWithEase } from "@/shared/functions/scroll-animation";
 import { Button } from "@heroui/button";
 import { NavbarItem } from "@heroui/navbar";
+import { JSX } from "react";
 
 /**
  * Função que renderiza o menu de navegação para dispositivos de desktop.

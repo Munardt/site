@@ -1,4 +1,5 @@
 import { Button } from "@heroui/button";
+import { JSX } from "react";
 
 /**
  * Componente de apresentação inicial do site. Famoso Hero Section.

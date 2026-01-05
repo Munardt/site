@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 /* Número total de colunas na grid */
 const colsNumber: number = 18;
 

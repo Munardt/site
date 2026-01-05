@@ -1,5 +1,6 @@
 import { AboutCardProps } from "@/interfaces/general/about-card";
 import { Card, CardBody, CardHeader } from "@heroui/card";
+import { JSX } from "react";
 
 /**
  * Componente de card de about

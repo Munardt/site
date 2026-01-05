@@ -2,6 +2,7 @@ import { AboutMunardt } from "@/layouts/about/about-munardt/about-munardt";
 import { AboutMe } from "@/layouts/about/about-me/about-me";
 import { AboutNameOrigin } from "@/layouts/about/about-name-origin/about-name-origin";
 import { AboutPhilosophy } from "@/layouts/about/about-philosophy/about-philosophy";
+import { JSX } from "react";
 
 /**
  * Componente que representa a página de sobre mim.

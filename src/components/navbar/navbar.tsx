@@ -10,7 +10,7 @@ import {
   NavbarMenuToggle,
 } from "@heroui/navbar";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 
 import { NavigationDesktop } from "./navigation/navigation-desktop";
 import { NavigationMobile } from "./navigation/navigation-mobile";

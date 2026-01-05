@@ -1,4 +1,5 @@
 import { HeroUIProvider } from "@heroui/system";
+import { JSX } from "react";
 import { useHref, useNavigate } from "react-router-dom";
 
 /**

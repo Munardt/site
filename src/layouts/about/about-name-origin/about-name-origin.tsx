@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { AboutCard } from "../about-card/about-card";
 
 /**
