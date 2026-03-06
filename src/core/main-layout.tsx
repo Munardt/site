@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/navbar/navbar";
+import { ScrollProgress } from "@/components/animations/scroll-progress";
 import { ToastProvider } from "@heroui/toast";
 import { JSX } from "react";
 
@@ -14,6 +15,7 @@ export default function MainLayout({
 }): JSX.Element {
   return (
     <div className="relative flex flex-col min-h-screen">
+      <ScrollProgress />
       <div className="sticky top-0 z-50">
         <Navbar />
       </div>

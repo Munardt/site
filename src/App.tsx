@@ -1,6 +1,7 @@
 import AboutPage from "@/layouts/about/about";
 import ContactPage from "@/layouts/contact/contact";
 import HomePage from "@/layouts/home/home";
+import ProjectsPage from "@/layouts/projects/projects";
 
 import MainLayout from "./core/main-layout";
 import { Provider } from "./provider";
@@ -18,8 +19,7 @@ import TechnologiesGrid from "@/layouts/technologies/technologies";
  * - `HomePage`: A página inicial da aplicação.
  * - `AboutPage`: A página "Sobre" da aplicação.
  * - `TechnologiesGrid`: Um grid de cards, cada um descrevendo uma tecnologia específica.
- * - `ProjectsPage`: A página de projetos da aplicação. (Atualmente desabilitada, aguardando
- *   a finalização da interface da página de projetos.)
+ * - `ProjectsPage`: A página de projetos da aplicação.
  * - `ContactPage`: A página de contato da aplicação.
  */
 function App() {
@@ -29,6 +29,7 @@ function App() {
         <HomePage />
         <AboutPage />
         <TechnologiesGrid />
+        <ProjectsPage />
         <ContactPage />
       </MainLayout>
     </Provider>
