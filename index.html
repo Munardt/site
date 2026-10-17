@@ -2,26 +2,36 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/site/assets/favicon-C05lw2Na.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Munardt &reg;</title>
-    <meta key="title" content="Munardt &reg;" property="og:title" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Gabriel Mundt · Desenvolvedor de Software</title>
     <meta
-      content="Entenda um pouco mais sobre quem sou, como comecei e como posso lhe ajudar!"
-      property="og:description"
-    />
-    <meta
-      content="Entenda um pouco mais sobre quem sou, como comecei e como posso lhe ajudar!"
       name="description"
+      content="Portfólio de Gabriel Arthur Mundt, desenvolvedor de software na Senior Sistemas. Projetos web com Angular, React, .NET e Java."
     />
+    <meta property="og:title" content="Gabriel Mundt · Desenvolvedor de Software" />
     <meta
-      key="viewport"
-      content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-      name="viewport"
+      property="og:description"
+      content="Portfólio de Gabriel Arthur Mundt, desenvolvedor de software na Senior Sistemas."
     />
-    <link href="/site/assets/favicon-C05lw2Na.ico" rel="icon" />
-    <script type="module" crossorigin src="/site/assets/index-BPUBNy6-.js"></script>
-    <link rel="stylesheet" crossorigin href="/site/assets/index-CI9bMVQx.css">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://munardt.github.io/site/" />
+    <meta name="theme-color" content="#0b0a14" />
+    <link rel="icon" href="/site/favicon.ico" />
+    <script>
+      // Aplica o tema antes da primeira pintura para evitar o "piscar".
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!theme) {
+          theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        if (theme === "light") document.documentElement.classList.add("light");
+      })();
+    </script>
+    <script type="module" crossorigin src="/site/assets/index-k0ZfIIvF.js"></script>
+    <link rel="stylesheet" crossorigin href="/site/assets/index-CTtbWAJU.css">
   </head>
   <body>
     <div id="root"></div>
