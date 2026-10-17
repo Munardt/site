@@ -1,19 +1,113 @@
 @import "tailwindcss";
-/* Observação: talvez seja necessário alterar o caminho para que se ajuste à estrutura do seu projeto */
-@config "../../tailwind.config.js";
 
-/* Seus estilos globais continuam */
-::selection {
-  background-color: rgba(45.7, 0.24, 277.023, 0.3);
+/* Variante para estilos exclusivos do tema claro (o tema escuro é o padrão). */
+@custom-variant light (&:where(.light, .light *));
+
+/*
+ * Paleta "Íris Solar": base violeta da paleta Íris com o coral do Duo Solar.
+ * Para trocar a paleta, altere apenas os valores em :root e :root.light.
+ */
+:root {
+  color-scheme: dark;
+
+  --bg: #0b0a14;
+  --surface: #12101e;
+  --surface-2: #191629;
+  --fg: #eeeafb;
+  --muted: #a39cc0;
+  --dim: #6e6889;
+  --line: #262238;
+  --line-strong: #39334f;
+  --a1: #a394ff;
+  --a2: #ff7a5c;
+  --cta: #ff7a5c;
+  --cta-fg: #1a0905;
+
+  /* Cores usadas pela esfera de partículas */
+  --sphere-a1: #a394ff;
+  --sphere-a2: #ff7a5c;
+  --sphere-hi: #ffffff;
 }
 
-html {
-  scroll-behavior: smooth;
+:root.light {
+  color-scheme: light;
+
+  --bg: #f6f4fc;
+  --surface: #ffffff;
+  --surface-2: #efecf8;
+  --fg: #16122a;
+  --muted: #5e5878;
+  --dim: #8a84a3;
+  --line: #e1dcf0;
+  --line-strong: #cac3e2;
+  --a1: #5b43f0;
+  --a2: #e8553a;
+  --cta: #4f38e6;
+  --cta-fg: #ffffff;
+
+  --sphere-a1: #5b43f0;
+  --sphere-a2: #e8553a;
+  --sphere-hi: #16122a;
 }
 
-body {
-  background:
-    radial-gradient(circle at 20% 10%, rgba(167, 85, 247, 0.08), transparent 35%),
-    radial-gradient(circle at 80% 30%, rgba(99, 102, 241, 0.08), transparent 40%);
-  background-attachment: fixed;
+@theme inline {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, "SF Mono", Menlo, Consolas,
+    monospace;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-a1: var(--a1);
+  --color-a2: var(--a2);
+  --color-cta: var(--cta);
+  --color-cta-fg: var(--cta-fg);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--a1) 35%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--a1);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@utility label {
+  @apply font-mono text-[11px] uppercase tracking-[0.14em] text-muted;
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8;
 }

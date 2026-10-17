@@ -1,63 +1,95 @@
-import { SectionReveal } from "@/components/animations/section-reveal";
-import { Button } from "@heroui/button";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 import { JSX } from "react";
+import { FiArrowDown } from "react-icons/fi";
+
+import { ParticleSphere } from "@/components/particle-sphere/particle-sphere";
+import { CopyEmail } from "@/components/ui/copy-email";
+import { useI18n } from "@/i18n/i18n-provider";
 
 /**
- * Componente de apresentação inicial do site. Famoso Hero Section.
- * @returns {JSX.Element} Um elemento JSX que representa o componente.
+ * Hero do site: esfera de partículas ao fundo, apresentação à esquerda e
+ * contato rápido à direita.
+ * @returns {JSX.Element} Seção hero
  */
 export default function HomePage(): JSX.Element {
-  const { scrollY } = useScroll();
-  const leftOrbY = useTransform(scrollY, [0, 600], [0, 120]);
-  const rightOrbY = useTransform(scrollY, [0, 600], [0, -100]);
+  const { t } = useI18n();
+  const reduce = useReducedMotion();
+
+  /**
+   * Gera as props de entrada animada com atraso escalonado.
+   * @param {number} index Ordem do elemento
+   * @returns Props de animação do motion
+   */
+  const enter = (index: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 18 },
+          animate: { opacity: 1, y: 0 },
+          transition: {
+            delay: 0.15 + index * 0.08,
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1] as const,
+          },
+        };
 
   return (
     <section
-      className="min-h-[100vh] flex flex-col justify-center items-center text-center px-6 relative overflow-hidden"
-      id="home"
+      aria-labelledby="hero-title"
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden"
+      id="top"
     >
-      <SectionReveal className="max-w-4xl">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-indigo-400 via-pink-500 to-purple-500 bg-clip-text text-transparent">
-          Olá, eu sou Gabriel Arthur Mundt
-        </h1>
-      </SectionReveal>
-
-      <SectionReveal className="max-w-2xl" delay={0.08}>
-        <p className="mt-4 text-lg sm:text-xl text-default-600">
-          Desenvolvedor Front-End Pleno com foco em performance, produtividade e
-          experiências visuais marcantes. Especialista em Angular, React, Azure
-          e Docker.
-        </p>
-      </SectionReveal>
-
-      <SectionReveal className="max-w-xl" delay={0.14}>
-        <p className="mt-2 text-default-600 text-sm sm:text-base">
-          Crio interfaces modernas, responsivas e elegantes, combinando código
-          limpo com atenção aos detalhes visuais para oferecer a melhor
-          experiência ao usuário.
-        </p>
-      </SectionReveal>
-
-      <SectionReveal className="mt-8 flex gap-4" delay={0.2}>
-        <Button color="default" variant="light">
-          <a href="#projects">Ver Projetos</a>
-        </Button>
-        <Button color="secondary" variant="shadow">
-          <a href="#contact">Entrar em Contato</a>
-        </Button>
-      </SectionReveal>
-
-      <div className="absolute inset-0 -z-10 blur-3xl opacity-30 bg-gradient-to-r from-indigo-950 to-purple-950" />
-
-      <motion.div
-        className="absolute top-[20%] left-[10%] w-40 h-40 bg-purple-700 rounded-full opacity-20 blur-2xl -z-10"
-        style={{ y: leftOrbY }}
+      <ParticleSphere />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-bg to-transparent"
       />
-      <motion.div
-        className="absolute bottom-[15%] right-[15%] w-60 h-60 bg-pink-500 rounded-full opacity-10 blur-3xl -z-10"
-        style={{ y: rightOrbY }}
-      />
+
+      <div className="container-page relative z-10 flex flex-wrap items-end justify-between gap-x-10 gap-y-8 pb-12 pt-32 sm:pb-16">
+        <div className="grid max-w-[780px] gap-5">
+          <motion.span
+            className="label flex items-center gap-2.5"
+            {...enter(0)}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-a1 opacity-50 motion-reduce:hidden" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-a1" />
+            </span>
+            {t.hero.eyebrow}
+          </motion.span>
+          <motion.h1
+            className="text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.05em] sm:text-6xl lg:text-[4.1rem]"
+            id="hero-title"
+            {...enter(1)}
+          >
+            {t.hero.title}
+          </motion.h1>
+          <motion.p
+            className="max-w-[46ch] text-base text-muted sm:text-lg"
+            {...enter(2)}
+          >
+            {t.hero.subtitle}
+          </motion.p>
+        </div>
+
+        <motion.div className="grid justify-items-start gap-3" {...enter(3)}>
+          <span className="text-sm text-muted">{t.hero.note}</span>
+          <div className="flex flex-wrap gap-3">
+            <CopyEmail />
+            <a
+              className="group inline-flex h-12 items-center gap-4 rounded-[4px] bg-cta px-5 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-cta-fg transition-transform hover:-translate-y-0.5"
+              href="#projects"
+            >
+              {t.hero.cta}
+              <FiArrowDown
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-y-0.5"
+                size={14}
+              />
+            </a>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

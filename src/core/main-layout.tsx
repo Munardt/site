@@ -1,26 +1,27 @@
-import { Navbar } from "@/components/navbar/navbar";
+import { JSX, ReactNode } from "react";
+
 import { ScrollProgress } from "@/components/animations/scroll-progress";
-import { ToastProvider } from "@heroui/toast";
-import { JSX } from "react";
+import Footer from "@/components/footer/footer";
+import { Navbar } from "@/components/navbar/navbar";
 
 /**
- * Layout principal do site, que inclui a barra de navegação e o conteúdo principal.
- * @param {{ children: React.ReactNode; }} param0 Propriedades do layout
+ * Layout principal do site: barra de progresso, navegação, conteúdo e rodapé.
+ * @param {{ children: ReactNode }} param0 Propriedades do layout
  * @returns {JSX.Element} Elemento JSX contendo o layout principal
  */
 export default function MainLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }): JSX.Element {
   return (
-    <div className="relative flex flex-col min-h-screen">
+    <div className="relative flex min-h-screen flex-col">
       <ScrollProgress />
-      <div className="sticky top-0 z-50">
-        <Navbar />
-      </div>
-      <main className="flex-grow snap-y snap-mandatory">{children}</main>
-      <ToastProvider placement="top-center" maxVisibleToasts={3} />
+      <Navbar />
+      <main className="flex-grow" id="main">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -1,42 +1,68 @@
-import { AboutMunardt } from "@/layouts/about/about-munardt/about-munardt";
-import { AboutMe } from "@/layouts/about/about-me/about-me";
-import { AboutNameOrigin } from "@/layouts/about/about-name-origin/about-name-origin";
-import { AboutPhilosophy } from "@/layouts/about/about-philosophy/about-philosophy";
-import { SectionReveal } from "@/components/animations/section-reveal";
 import { JSX } from "react";
 
+import { Logo } from "@/assets/icons";
+import { SectionReveal } from "@/components/animations/section-reveal";
+import { getAge, profile } from "@/data/profile";
+import { useI18n } from "@/i18n/i18n-provider";
+
 /**
- * Componente que representa a página de sobre mim.
- * Explica um pouco sobre mim e a Munardt, como eu acredito que ela pode — e deve — simplificar a vida, como nasceu, e como ela funciona.
- * @returns {JSX.Element} Um elemento JSX que representa o componente.
+ * Seção "Sobre": apresentação pessoal e alguns fatos rápidos.
+ * @returns {JSX.Element} Seção sobre
  */
 export default function AboutPage(): JSX.Element {
+  const { t } = useI18n();
+  const facts = [
+    { label: t.about.facts.age, value: t.about.facts.ageValue(getAge()) },
+    { label: t.about.facts.experience, value: t.about.facts.experienceValue },
+    { label: t.about.facts.since, value: String(profile.brandSince) },
+  ];
+
   return (
     <section
-      className="flex flex-col justify-center items-center min-h-[100vh] relative z-10 py-20 bg-transparent"
+      aria-labelledby="about-title"
+      className="container-page grid gap-12 py-20 sm:py-28 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-20"
       id="about"
     >
-      <SectionReveal>
-        <h2 className="bg-clip-text text-4xl sm:text-5xl font-bold text-center text-shadow-lg/60 mb-12 bg-gradient-to-r from-pink-400 to-indigo-600 ">
-          Um pouco sobre mim & Munardt
+      <SectionReveal className="grid content-start gap-6">
+        <span className="label flex items-center gap-3">
+          <span aria-hidden="true" className="h-px w-6 bg-a1" />
+          {t.about.label}
+        </span>
+        <h2
+          className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl lg:text-5xl"
+          id="about-title"
+        >
+          {t.about.title}
         </h2>
+        <div className="grid max-w-[62ch] gap-5 text-base leading-relaxed text-muted sm:text-lg">
+          {t.about.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </SectionReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 px-4 sm:px-6 w-full max-w-[1200px] mx-auto">
-        <SectionReveal className="md:col-span-4" delay={0.04}>
-          <AboutMe />
-        </SectionReveal>
-        <SectionReveal className="md:col-span-8" delay={0.08}>
-          <AboutMunardt />
-        </SectionReveal>
-        <SectionReveal className="md:col-span-8" delay={0.12}>
-          <AboutPhilosophy />
-        </SectionReveal>
-        <SectionReveal className="md:col-span-4" delay={0.16}>
-          <AboutNameOrigin />
-        </SectionReveal>
-      </div>
-      <div className="absolute inset-0 -z-10 blur-3xl opacity-25 bg-gradient-to-tr from-indigo-950 to-purple-950" />
+      <SectionReveal className="self-end" delay={0.08}>
+        <div className="relative overflow-hidden rounded-2xl border border-line bg-surface">
+          <Logo
+            aria-hidden="true"
+            className="absolute -right-6 -top-6 text-a1/10"
+            size={180}
+          />
+          <dl className="relative grid divide-y divide-line">
+            {facts.map((fact) => (
+              <div
+                key={fact.label}
+                className="flex items-baseline justify-between gap-4 p-6"
+              >
+                <dt className="label">{fact.label}</dt>
+                <dd className="text-2xl font-semibold tabular-nums tracking-[-0.03em]">
+                  {fact.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </SectionReveal>
     </section>
   );
 }
