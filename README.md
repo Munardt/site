@@ -1,42 +1,38 @@
-# Munardt - Site Pessoal & Portfólio
+# Gabriel Mundt · Portfólio
 
-Este repositório contém o código-fonte do site oficial da **Munardt**, identidade visual e marca criada por Gabriel Arthur para representar sua atuação como desenvolvedor de software, consultor técnico e criador de soluções web modernas.
+Código-fonte do meu portfólio pessoal.
 
 > 🌐 Acesse o site: [https://munardt.github.io/site](https://munardt.github.io/site)
 
 ---
 
-## ✨ Sobre a Munardt
+## 👨‍💻 Sobre
 
-Mais do que uma marca, **Munardt** é uma forma de pensar e desenvolver tecnologia com propósito. O nome surgiu da união entre os sobrenomes **Mundt** e **Arthur**, e reflete uma visão de desenvolvimento orientada a clareza, performance e impacto real.
-
-Munardt representa o compromisso com soluções bem arquitetadas, interfaces elegantes e experiência de usuário acima da média.
+Portfólio de **Gabriel Arthur Mundt**, desenvolvedor de software na Senior Sistemas. **Munardt** é o nome que uso desde 2018 nos meus projetos pessoais.
 
 ---
 
-## 👨‍💻 Sobre o Autor
+## 🛠️ Tecnologias
 
-Meu nome é **Gabriel Arthur**, sou desenvolvedor full-stack com foco em:
-
-- Desenvolvimento Front-End (React, Angular, Tailwind)
-- Back-End com .NET (C#) e SQL Server
-- DevOps com Docker, Azure App Services, GitHub Actions e `semantic-release`
-- Arquitetura de projetos, design system e automações
-
-Atualmente, além de construir aplicações escaláveis e interfaces ricas, também trabalho com consultorias e treinamentos técnicos sob a marca Munardt.
+- [Vite](https://vitejs.dev) + [React](https://react.dev) + [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS v4](https://tailwindcss.com) com tokens de cor em `src/styles/globals.css`
+- [Motion](https://motion.dev) para animações
+- Esfera de partículas própria em canvas 2D (`src/components/particle-sphere`)
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🗂️ Onde editar
 
-Este site foi construído com:
+| O quê | Arquivo |
+| --- | --- |
+| Paleta de cores (tema escuro e claro) | `src/styles/globals.css` |
+| Textos em português, inglês e espanhol | `src/i18n/locales/{pt,en,es}.ts` |
+| Projetos (links, tags, ano, situação) | `src/data/projects.ts` |
+| Experiência profissional | `src/data/experience.ts` |
+| Stack | `src/data/stack.ts` |
+| E-mail e redes sociais | `src/data/profile.ts` |
 
-- [Vite](https://vitejs.dev/guide/) – Build tool moderna e rápida
-- [HeroUI](https://heroui.com) – Componentes prontos com design elegante
-- [Tailwind CSS](https://tailwindcss.com) – Estilização com utilitários CSS
-- [Tailwind Variants](https://tailwind-variants.org) – Variantes de estilos
-- [Framer Motion](https://www.framer.com/motion) – Animações suaves e modernas
-- [TypeScript](https://www.typescriptlang.org) – Tipagem estática no JS
+O dicionário em português é a fonte da verdade: se uma chave faltar em `en.ts` ou `es.ts`, o TypeScript acusa erro no build.
 
 ---
 
@@ -48,3 +44,12 @@ Clone o projeto:
 git clone https://github.com/munardt/site.git
 cd site
 ```
+
+Instale as dependências e suba o servidor:
+
+```bash
+npm ci
+npm run dev
+```
+
+O site abre em http://localhost:5173/site/.

@@ -1,5 +1,5 @@
+import { motion, useScroll, useSpring } from "motion/react";
 import { JSX } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
 
 /**
  * Barra fina com progresso de rolagem da página.
@@ -14,7 +14,7 @@ export function ScrollProgress(): JSX.Element {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-indigo-200 via-fuchsia-500 to-violet-600"
+      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-a1 to-a2"
       style={{ scaleX }}
     />
   );

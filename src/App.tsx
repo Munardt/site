@@ -1,38 +1,34 @@
+import MainLayout from "./core/main-layout";
+
 import AboutPage from "@/layouts/about/about";
 import ContactPage from "@/layouts/contact/contact";
+import ExperiencePage from "@/layouts/experience/experience";
 import HomePage from "@/layouts/home/home";
 import ProjectsPage from "@/layouts/projects/projects";
-
-import MainLayout from "./core/main-layout";
-import { Provider } from "./provider";
-import TechnologiesGrid from "@/layouts/technologies/technologies";
+import StackPage from "@/layouts/stack/stack";
+import { I18nProvider } from "@/i18n/i18n-provider";
+import { ThemeProvider } from "@/theme/theme-provider";
 
 /**
  * O componente principal da aplicação.
  *
- * Este componente encapsula o layout principal da aplicação em um provedor de contexto,
- * que fornece o estado e as ações da aplicação para todos os seus filhos.
- *
- * O layout principal é uma pilha vertical de seções, cada uma representada por um componente separado.
- * As seções são:
- *
- * - `HomePage`: A página inicial da aplicação.
- * - `AboutPage`: A página "Sobre" da aplicação.
- * - `TechnologiesGrid`: Um grid de cards, cada um descrevendo uma tecnologia específica.
- * - `ProjectsPage`: A página de projetos da aplicação.
- * - `ContactPage`: A página de contato da aplicação.
+ * Fornece tema e idioma para toda a página, que é uma pilha vertical de
+ * seções: hero, projetos, experiência, stack, sobre e contato.
  */
 function App() {
   return (
-    <Provider>
-      <MainLayout>
-        <HomePage />
-        <AboutPage />
-        <TechnologiesGrid />
-        <ProjectsPage />
-        <ContactPage />
-      </MainLayout>
-    </Provider>
+    <ThemeProvider>
+      <I18nProvider>
+        <MainLayout>
+          <HomePage />
+          <ProjectsPage />
+          <ExperiencePage />
+          <StackPage />
+          <AboutPage />
+          <ContactPage />
+        </MainLayout>
+      </I18nProvider>
+    </ThemeProvider>
   );
 }
 
