@@ -89,7 +89,8 @@ export const projects: Project[] = [
   {
     id: "lightsOut",
     title: "Lights Out",
-    address: "lights-out",
+    url: "https://munardt-lights-out.vercel.app/",
+    address: "munardt-lights-out.vercel.app",
     status: "wip",
     year: "2026",
     tags: ["React", "TypeScript", "3D"],
