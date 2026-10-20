@@ -69,7 +69,7 @@ const pt = {
       lightsOut: {
         kind: "Projeto pessoal sobre F1",
         summary:
-          "Um projeto sobre Fórmula 1 com visualizações em 3D. Em desenvolvimento.",
+          "Um projeto sobre Fórmula 1 com visualizações em 3D. MVP em produção, ainda em desenvolvimento.",
       },
       estoque: {
         kind: "Projeto em equipe",

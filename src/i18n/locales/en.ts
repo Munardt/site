@@ -65,7 +65,8 @@ const en: Dictionary = {
       },
       lightsOut: {
         kind: "Personal F1 project",
-        summary: "A Formula 1 project with 3D visualizations. In development.",
+        summary:
+          "A Formula 1 project with 3D visualizations. MVP live, still in development.",
       },
       estoque: {
         kind: "Team project",

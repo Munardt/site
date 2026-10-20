@@ -91,7 +91,7 @@ export const projects: Project[] = [
     title: "Lights Out",
     url: "https://munardt-lights-out.vercel.app/",
     address: "munardt-lights-out.vercel.app",
-    status: "wip",
+    status: "live",
     year: "2026",
     tags: ["React", "TypeScript", "3D"],
     preview: "track",
